@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair Display">
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        {% block head %}{% endblock %}
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>J's jewellery: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"> <span class="black">J's jewellery</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button"></button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/account">Settings</a></li>
+                        <li class="nav-item nav-link nav-basket-count-container" data-bs-toggle="modal" data-bs-target="#myModal" href="/basket"><a>Basket</a>
+                            {% if session['totalQuantity'] %}
+                                <span class="badge badge-light nav-basket-count">({{ session['totalQuantity'] }})</span>
+                            {% else %}
+                                <span class="badge badge-light nav-basket-count">(0)</span>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+
+                            <!-- MODAL START -->
+                            <div class="modal fade" id="myModal">
+                            	<div class="modal-dialog modal-dialog-centered modal-lg">
+                                	<div class="modal-content">
+                            			<div id="shopping-cart">
+                            				<div class="modal-header">
+                            			        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            			    </div>
+                            				<div class="modal=body">
+                            					<div class="txt-heading">Your Basket</div>
+                            					<hr>
+                            					{% if 'basket_item' in session %}
+                            					    <div>
+                                						<a class="btnEmpty" href="{{ url_for('.empty_basket') }}">Empty Basket</a>
+                                						<table class="tbl-cart" cellpadding="10" cellspacing="1">
+                                    						<tbody>
+                                    							<tr class="tbl-basket">
+                                    								<th style="text-align:left;">Name</th>
+                                    								<th style="text-align:right;" width="5%">Quantity</th>
+                                    								<th style="text-align:right;" width="10%">Unit Price</th>
+                                    								<th style="text-align:right;" width="10%">Price</th>
+                                    								<th style="text-align:center;" width="5%">Remove</th>
+                                    							</tr>
+                                    							{% for key, val in session['basket_item'].items() %}
+                                    								{% set quantity = session['basket_item'][key]['quantity'] %}
+                                    								{% set price = session['basket_item'][key]['price'] %}
+                                    								{% set item_price = session['basket_item'][key]['total_price'] %}
+                                    								<tr>
+                                    									<td><img src="static/proudcts/{{ session['basket_item'][key]['image'] }}" class="cart-item-image" />{{ session['basket_item'][key]['name'] }}</td>
+                                    									<td style="text-align:right;">{{ quantity }}</td>
+                                    									<td style="text-align:right;">{{ price | pound }}</td>
+                                    									<td style="text-align:right;">{{ item_price | pound }}</td>
+                                    									<td style="text-align:center;">
+                                    										<a href="{{ url_for('.delete_product', _id=session['basket_item'][key]['id']) }}" class="btnRemoveAction">
+                                    											<img class="btnRemove"src="/static/images/icon-delete.png" alt="Remove Item" />
+                                    										</a>
+                                    									</td>
+                                    								</tr>
+                                    							{% endfor %}
+                                    							<tr>
+                                    								<td colspan="2" align="right">Total:</td>
+                                    								<td align="right">{{ session['totalQuantity'] }}</td>
+                                    								<td align="right" colspan="2"><strong> {{ session['totalPrice'] | pound }}</strong></td>
+                                    								<td></td>
+                                    							</tr>
+                                    						</tbody>
+                                						</table>
+                            						</div>
+                            					{% else: %}
+                            						<div class="no-records">Your Cart is Empty</div>
+                            					{% endif %}
+                            					    <div class="buttonsy">
+                            						{% if 'basket_item' in session %}
+                            					        <div class="modal-footer">
+                            					            <a href="/checkout" class="btn btn-succes">Checkout</a>
+                            					    {% endif %}
+                        					     	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            					        </div>
+                            					    </div>
+                            				</div>
+                            			</div>
+                            		</div>
+                            	</div>
+                            </div>
+                            <!-- MODAL END -->
+
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+                {% for category, message in messages %}
+                    <header>
+                        <div class="{{ category }}" role="alert">
+                            {{  message  }}
+                        </div>
+                    </header>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+        <main class="container-p5">
+            {% block main %}{% endblock %}
+
+        <footer class="small text-center text-muted">
+            <a>Copyright Pojjara</a>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    </body>
+
+</html>

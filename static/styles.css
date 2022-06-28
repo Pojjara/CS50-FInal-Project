@@ -1,0 +1,416 @@
+nav .navbar-brand {
+    /* size for brand */
+    font-size:38px;
+    font-family: "Playfair Display";
+    font-style: italic;
+    text-align:center;
+}
+.navbar-nav li:hover {
+    background-color:#e8e8e8;
+    border-radius:18px;
+}
+
+#container > div {
+    margin:10px;
+}
+
+.navbar {
+    font-family: "Cambria,Georgia,serif";
+}
+
+#container {
+    justify-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.carousel-control-next {
+    right: 250px;
+}
+.carousel-control-prev {
+    left: 250px;
+}
+
+
+
+/* Colors for brand */
+
+nav .navbar-brand .blue {
+    color: #537fbe;
+}
+
+nav .navbar-brand .red {
+    color: #ea433b;
+}
+
+nav .navbar-brand .yellow {
+    color: #f5b82e;
+}
+
+nav .navbar-brand .green {
+    color: #2e944b;
+}
+.nav-item{
+    padding-left:1px;
+    padding-right:1px;
+    cursor:pointer;
+}
+.nav-basket-count {
+    color: rgba(0,0,0,.5);
+    padding:0px;
+}
+main .form-control {
+    /* Center form controls */
+    display: inline-block;
+    /* Override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main {
+    /* Scroll horizontally as needed */
+    overflow-x: auto;
+    /* Center contents */
+    text-align: center;
+}
+
+main img {
+    /* Constrain images on small screens */
+    max-width: 100%;
+}
+container{
+    margin: 50px;
+    width: 0%;
+}
+
+body {
+    list-style-type: none;
+    font-family: Cambria,Georgia,serif;
+    color: #211a1a;
+	font-size: 0.9em;
+}
+.modal-content {
+    display:flex;
+}
+.modal-flex {
+    display:flex;
+    flex-direction:column;
+}
+.modal-title-centered {
+    text-align:center;
+}
+.modal-img {
+    float:left;
+    height:50%;
+    width:100%;
+    cursor: zoom-in;
+
+}
+#zoom-in {
+    cursor: zoom-in;
+}
+
+.buttonsy {
+    float: right;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
+
+main table {
+    text-align: left;
+}
+
+main tfoot {
+    font-weight: bold;
+}
+
+.card{
+    width: 18rem;
+    height: 29rem;
+    transition-timing-function: ease-in;
+    transition: border 0.5s;
+    border: 1px solid rgba(232,232,232,.5);
+}
+.card:hover {
+    border: 1px solid rgba(232,232,232,1);;
+}
+.card img {
+    cursor: pointer;
+}
+
+
+.price-crossed {
+    color: red;
+    text-decoration: line-through;
+    font-weight: bold;
+}
+.sale {
+    display:flex;
+    justify-content: center;
+}
+
+.quantity {
+    height: 24px;
+    width: 48px;
+    text-align: center;
+    margin: 0 12px;
+    border-radius: 2px;
+    border: 1px solid #222;
+}
+
+.price {
+    color: green;
+    font-weight: bold;
+}
+.col-lg-2{
+    width:16.66666667%;
+
+}
+
+#shopping-cart {
+	margin: 40px;
+}
+
+#product-grid {
+	margin: 40px;
+}
+
+#shopping-cart table {
+	width: 100%;
+	background-color: #F0F0F0;
+}
+
+#shopping-cart table td {
+	background-color: #FFFFFF;
+}
+
+.txt-heading {
+	color: #211a1a;
+
+	overflow: auto;
+	font-size: 30px;
+	text-align:center;
+}
+.modal-header{
+    border-bottom:0px solid;
+    text-align: center;
+    flex-direction:column;
+}
+.tbl-basket{
+    background-color: #fafafa;
+
+}
+
+footer {
+    padding:10px;
+}
+.btnEmpty {
+	background-color: #eb8181;
+	border: #e38484 1px solid;
+	padding: 5px 10px;
+	color: #ffffff;
+	float: right;
+	text-decoration: none;
+	border-radius: 3px;
+	margin: 10px 0px;
+}
+.btnEmpty:hover {
+    color: #ffffff;
+    background-color: #db7979;
+    border: #db7979 1px solid;
+    text-decoration: none;
+}
+
+.btnAddAction {
+    padding: 5px 10px;
+    margin-left: 5px;
+    background-color: #efefef;
+    border: #E0E0E0 1px solid;
+    color: #211a1a;
+    float: right;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#product-grid .txt-heading {
+	margin-bottom: 18px;
+}
+
+.product-item {
+	float: left;
+	background: #ffffff;
+	margin: 30px 30px 0px 0px;
+	border: #E0E0E0 1px solid;
+}
+
+.product-image {
+	height: 155px;
+	width: 250px;
+	background-color: #FFF;
+}
+
+.clear-float {
+	clear: both;
+}
+
+.demo-input-box {
+	border-radius: 2px;
+	border: #CCC 1px solid;
+	padding: 2px 1px;
+}
+
+.tbl-cart {
+	font-size: 1.3em;
+}
+
+.tbl-cart th {
+	font-weight: normal;
+}
+
+.product-title {
+	margin-bottom: 20px;
+}
+
+.product-price {
+	float:left;
+}
+
+.cart-action {
+	float: right;
+}
+
+.product-quantity {
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: #E0E0E0 1px solid;
+}
+
+.product-tile-footer {
+    padding: 15px 15px 0px 15px;
+    overflow: auto;
+}
+
+.btn-succes {
+    color: #ffff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.btn-succes:hover {
+    color: #ffff;
+    background-color: #269d41;
+    border-color: #269d41;
+}
+.btn-p {
+    background-color: rgba(232,232,232,.3);
+    border-color: rgba(232,232,232,.3);
+    border:1px solid rgba(232,232,232,1);;
+}
+.btn-p:hover {
+    background-color: #e8e8e8;
+    border-color: #e8e8e8;
+}
+
+.btn-danger:hover {
+    color: #212529;
+}
+
+.cart-item-image {
+	width: 60px;
+    height: 60px;
+    border-radius: 25%;
+    border: #E0E0E0 1px solid;
+    padding: 0px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+.no-records {
+	text-align: center;
+	clear: both;
+	margin: 38px 0px;
+}
+.quantity-size-selector {
+    margin:auto;
+}
+
+.filter {
+    list-style-type: none;
+    text-align: center;
+    margin: 7px;
+    padding: 0;
+    background-color: rgba(232,232,232,.3);
+    border-radius:18px;
+}
+
+.filter li {
+    display: inline-block;
+    font-size: 20px;
+    padding: 20px;
+    border-radius:18px;
+}
+.filter li:hover {
+    background-color:#e8e8e8;
+
+}
+
+.filter li a {
+    color: rgba(0,0,0,.5);
+    text-decoration: none;
+    font-size:25px;
+}
+
+.filter-small li {
+    padding:8px;
+}
+.container-p5 {
+    padding:20px;
+}
+
+.main-container {
+    display:flex;
+    padding:1px;
+    justify-content: center;
+}
+.billing-payment-container {
+    display:flex;
+    padding:1px;
+}
+.billing {
+    display:flex;
+    padding:1px;
+    flex-direction: column;
+}
+.payment {
+    display:flex;
+    padding:1px;
+    flex-direction: column;
+}
+
+#carouselExampleIndicators {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
